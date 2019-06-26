@@ -53,7 +53,7 @@ body {
   margin: 0 auto;
   padding: 2rem 0;
   box-sizing: border-box;
-  font-family: 'Yu Gothic', YuGothic, Meiryo, sans-serif;
+  font-family: sans-serif;
   font-feature-settings: 'palt' 1;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -61,7 +61,7 @@ body {
 }
 
 code {
-  font-family: 'Yu Gothic', YuGothic, Meiryo, sans-serif;
+  font-family: monospace;
   font-weight: 500;
   padding-left: 0.1em;
   padding-right: 0.1em;
@@ -183,13 +183,13 @@ pre {
   padding: 1rem;
   margin-left: 2rem;
   margin-right: 2rem;
-  background: var(--dark-grey);
-  color: var(--white);
+  background: var(--light-grey);
 }
 
-pre > code {
+pre code {
   font-weight: 500;
   border: 0;
+  background: inherit;
 }
 
 ol,
@@ -258,6 +258,13 @@ table > tbody > tr:first-child > td {
 
 table > tbody > tr + tr > td {
   border-top: 0;
+}
+
+img {
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+  height: auto;
 }
 
 @media print {
