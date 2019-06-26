@@ -1,6 +1,6 @@
 {
   "name": "@gct256/md-doc",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Document generator with markdown.",
   "main": "lib/md-doc.js",
   "bin": "bin/md-doc",
