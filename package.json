@@ -1,0 +1,30 @@
+{
+  "name": "@gct256/md-doc",
+  "version": "1.0.0",
+  "description": "Document generator with markdown.",
+  "main": "lib/md-doc.js",
+  "bin": "bin/md-doc",
+  "scripts": {
+    "example": "./bin/md-doc example example-output"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gct256/md-doc.git"
+  },
+  "author": "gct256+github@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gct256/md-doc/issues"
+  },
+  "homepage": "https://github.com/gct256/md-doc#readme",
+  "dependencies": {
+    "fs-extra": "^8.0.1",
+    "globby": "^9.2.0",
+    "markdown-it": "^8.4.2",
+    "markdown-it-header-sections": "^1.0.0",
+    "markdown-it-include": "^1.1.0",
+    "markdown-it-title": "^1.0.4",
+    "mustache": "^3.0.1",
+    "yargs": "^13.2.4"
+  }
+}

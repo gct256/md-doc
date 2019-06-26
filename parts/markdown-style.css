@@ -1,0 +1,317 @@
+/* reset */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+ol,
+ul,
+li,
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td,
+pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* color */
+:root {
+  --light-grey: #eee;
+  --dark-grey: #666;
+  --white: #fff;
+  --black: #000;
+  --grey: #888;
+  --clear-blue: #06f;
+  --red: #f00;
+  --purple: #c8e;
+  --green: #9e9;
+}
+
+/* style */
+html {
+  background: var(--light-grey);
+  margin: 0;
+  padding: 1rem 0;
+  font-size: 13px;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  width: 210mm;
+  margin: 0 auto;
+  padding: 2rem 0;
+  box-sizing: border-box;
+  font-family: 'Yu Gothic', YuGothic, Meiryo, sans-serif;
+  font-feature-settings: 'palt' 1;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 2;
+}
+
+code {
+  font-family: 'Yu Gothic', YuGothic, Meiryo, sans-serif;
+  font-weight: 500;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+  background: #ccc;
+}
+
+em {
+  font-weight: 500;
+  font-style: italic;
+  padding-left: 0.1em;
+  padding-right: 0.3em;
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: 900;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+  text-decoration: underline;
+}
+
+a {
+  color: var(--clear-blue);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--red);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 2em 2rem;
+  font-weight: 900;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 3px double var(--black);
+}
+
+h3 {
+  font-size: 1.6rem;
+  border-bottom: 1px solid var(--black);
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p + p,
+p + pre,
+p + ul,
+p + ol,
+p + blockquote,
+p + table,
+pre + p,
+pre + pre,
+pre + ul,
+pre + ol,
+pre + blockquote,
+pre + table,
+ul + p,
+ul + pre,
+ul + ul,
+ul + ol,
+ul + blockquote,
+ul + table,
+ol + p,
+ol + pre,
+ol + ul,
+ol + ol,
+ol + blockquote,
+ol + table,
+blockquote + p,
+blockquote + pre,
+blockquote + ul,
+blockquote + ol,
+blockquote + blockquote,
+blockquote + table,
+table + p,
+table + pre,
+table + ul,
+table + ol,
+table + blockquote,
+table + table {
+  margin-top: 1em;
+}
+
+p {
+  line-height: 2;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+pre {
+  line-height: 2;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  white-space: pre-wrap;
+  padding: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  background: var(--dark-grey);
+  color: var(--white);
+}
+
+pre > code {
+  font-weight: 500;
+  border: 0;
+}
+
+ol,
+ul {
+  margin-left: calc(2rem + 1em);
+  margin-right: 2rem;
+}
+
+li > ul,
+li > ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+hr {
+  margin: 4rem 2rem;
+  border-width: 1px 0 0;
+  border-style: solid;
+  border-color: var(--grey);
+  height: 1px;
+}
+
+blockquote {
+  border-width: 0 0 0 0.25em;
+  border-style: solid;
+  border-color: var(--grey);
+  padding: 0.5em 1em;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: separate;
+  border-width: 1px 0 0 1px;
+  border-color: var(--grey);
+  border-style: solid;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+th {
+  font-weight: 900;
+  text-align: center;
+}
+
+td {
+  font-weight: 500;
+  text-align: center;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+  padding: 0.5em;
+  border-width: 0 1px 1px 0;
+  border-color: var(--grey);
+  border-style: solid;
+}
+
+table > tbody > tr:first-child > th,
+table > tbody > tr:first-child > td {
+  border-top: 1px solid var(--grey);
+}
+
+table > tbody > tr + tr > td {
+  border-top: 0;
+}
+
+@media print {
+  @page {
+    size: 210mm 297mm;
+    margin: 13mm;
+    @bottom-center {
+      content: 'test';
+    }
+  }
+
+  html {
+    background: var(--white);
+  }
+
+  body {
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+  }
+
+  p,
+  ol,
+  ul,
+  blockquote,
+  table,
+  pre {
+    page-break-inside: avoid;
+    break-inside: avoid-page;
+  }
+
+  pre {
+    background-color: transparent;
+    color: var(--black);
+    border: 1px solid var(--grey);
+  }
+
+  a {
+    color: var(--black);
+  }
+  section {
+    page-break-inside: avoid;
+  }
+}
+
+/* highlight */
+
+@media screen, tv {
+  /* TODO */
+}
