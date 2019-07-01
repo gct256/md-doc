@@ -2,73 +2,89 @@
 
 - Document generator with markdown.
 
-<!-- ## Usage
+## CLI Usage
 
 ```sh
 $ md-doc [options] INPUT-DIR OUTPUT-DIR
 ```
 
 - INPUT-DIR
-
-  - Directory for input.
-  - Scan `**/*.md` to build.
-    - Ignore underscore prefixed file name.
-
+  - 入力元
+  - 拡張子が`md`のファイルすべてを対象にする
+    - ファイル名先頭が`_`のものは無視
+  - 拡張子が以下のファイルは画像としてすべてコピーされる
+    - `gif`
+    - `png`
+    - `jpg` / `jpeg`
+    - `svg` / `svgz`
 - OUTPUT-DIR
-  - Directory for output.
-  - Keep input directory hierarchy.
+  - 出力先
+  - 入力元の階層を再現する
 
-example:
+## CLI Options
 
-```shell
-$ find input-dir -type f
-input-dir/foo.md
-input-dir/bar.md
-input-dir/_baz.md
-input-dir/qux/quux.md
+### --header-file FILE
 
-$ md-doc input-dir output-dir
+- ヘッダファイル
+- 省略時はシンプルな HTML5 のヘッダ
 
-$ find output-dir -type f
-output-dir/foo.html
-output-dir/bar.html
-output-dir/qux/quux.html
-```
+### --footer-file FILE
 
-## Options
+- フッタファイル
+- 省略時はシンプルな HTML5 のフッタ
 
-### --header FILE
+### --css-file FILE
 
-- Header file for HTML.
-- Default, use simple HTML5 header.
+- スタイルシートファイル
+- 省略時は内蔵の CSS
+- `--css-url`と同時指定した場合はこちらは使用されない
 
-### --footer FILE
+### --css-url
 
-- Footer file for HTML.
-- Default, use simple HTML5 footer.
+- スタイルシートの URL
+- `--css-file`と同時指定した場合はこちらを優先
+- ビルド時にダウンロードして埋め込むので url や@import を使っている場合は正常に表示されない
 
-### --css FILE
+### --delete-directory
 
-- Css file.
-- Default, use <a href="https://github.com/gct256/markdown-style">gct256/markdown-style</a>
+- 指定された場合は出力前に出力ディレクトリを削除する
 
-## Markdown extended syntax
+## Markdown の書式
 
-### Include
+### ファイルのインクルード
 
 ```markdown
 `!!! include(FILENAME) !!!`
 ```
 
-- FILENAME: relative path from input directory.
-- Do not forget single quote. (Purpose avoid prettier formating)
+- FILENAME: 入力元ディレクトリからの相対パスでファイルを指定
+- 前後のバッククォートを忘れずに（prettier の整形回避のために必要)
 
-## header, footer, css file syntax
+### 画像
 
-### title
-
-```
-{{ title }}
+```markdown
+`![画像](FILENAME)`
 ```
 
-- Expand to document title (first heading). -->
+- FILENAME: 入力元ディレクトリからの相対パスでファイルを指定
+
+### 改ページ不可ブロック
+
+```markdown
+::: .group
+.
+.
+.
+:::
+```
+
+- `::: .group`から次の`...`までが改ページ不可のブロックとなる
+
+## オプション指定での挿し込みファイルの書式
+
+Mustache 形式での変数展開が可能。
+定義済みの変数は以下の通り。
+
+| 変数名 | 内容                                     |
+| ------ | ---------------------------------------- |
+| title  | 文書のタイトル（最初に見つかった見出し） |
