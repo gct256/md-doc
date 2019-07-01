@@ -9,7 +9,8 @@
     "prebuild": "npm run css",
     "build": "rollup -c",
     "prewatch": "npm run css",
-    "watch": "rollup -c -w"
+    "watch": "rollup -c -w",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
