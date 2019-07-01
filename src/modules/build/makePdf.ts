@@ -6,38 +6,14 @@ import puppeteer from 'puppeteer';
 import { replaceExt } from '../utils/replaceExt';
 import { Options } from '../models/options';
 
-let globalBrowser: puppeteer.Browser | null = null;
-let globalPage: puppeteer.Page | null = null;
-
-/** PDF作成用のオブジェクトを解放 */
-export const finishMakePdf = async () => {
-  if (globalPage !== null) {
-    await globalPage.close();
-    globalPage = null;
-  }
-
-  if (globalBrowser !== null) {
-    await globalBrowser.close();
-    globalBrowser = null;
-  }
-};
-
-/** PDF作成用のオブジェクトを確保 */
-const prepareMakePdf = async (): Promise<puppeteer.Page> => {
-  await finishMakePdf();
-  globalBrowser = await puppeteer.launch();
-  globalPage = await globalBrowser.newPage();
-
-  return globalPage;
-};
-
 /**
  * HTMLを元にPDFを作成
  *
  * @param htmlFilePath HTMLファイルパス
  */
 export const makePdf = async (options: Options, relPath: string) => {
-  const page = await prepareMakePdf();
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
 
   const htmlFilePath = replaceExt(
     path.resolve(options.output, relPath),
@@ -67,4 +43,7 @@ export const makePdf = async (options: Options, relPath: string) => {
   });
 
   options.logger.info(`write: ${pdfFilePath}`);
+
+  await page.close();
+  await browser.close();
 };

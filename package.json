@@ -10,6 +10,7 @@
     "build": "rollup -c",
     "prewatch": "npm run css",
     "watch": "rollup -c -w",
+    "example": "./bin/md-doc --delete-directory example example-output",
     "prepare": "npm run build"
   },
   "repository": {

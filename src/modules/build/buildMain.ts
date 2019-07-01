@@ -3,7 +3,7 @@ import { getFragments } from '../models/fragments';
 
 import { getMardownBuilder } from './getMarkdownBuilder';
 import { buildMarkdown } from './buildMarkdown';
-import { finishMakePdf, makePdf } from './makePdf';
+import { makePdf } from './makePdf';
 import { copyImage } from './copyImage';
 
 export const buildMain = async (options: Options, relPaths: string[]) => {
@@ -24,6 +24,4 @@ export const buildMain = async (options: Options, relPaths: string[]) => {
   );
 
   await Promise.all(relPaths.map((relPath) => makePdf(options, relPath)));
-
-  await finishMakePdf();
 };
