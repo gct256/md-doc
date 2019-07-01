@@ -2,7 +2,7 @@ import path from 'path';
 
 import globby from 'globby';
 
-import { Options } from '../options';
+import { Options } from '../models/options';
 
 export const getRelPaths = async (options: Options) => {
   const filePaths = await globby(

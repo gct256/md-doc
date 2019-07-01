@@ -2,10 +2,9 @@ import url from 'url';
 import path from 'path';
 
 import puppeteer from 'puppeteer';
-import signale from 'signale';
 
-import { replaceExt } from '../replaceExt';
-import { Options } from '../options';
+import { replaceExt } from '../utils/replaceExt';
+import { Options } from '../models/options';
 
 let globalBrowser: puppeteer.Browser | null = null;
 let globalPage: puppeteer.Page | null = null;
@@ -67,5 +66,5 @@ export const makePdf = async (options: Options, relPath: string) => {
     },
   });
 
-  signale.info(`write: ${pdfFilePath}`);
+  options.logger.info(`write: ${pdfFilePath}`);
 };

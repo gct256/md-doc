@@ -49,6 +49,8 @@
 `!!! include(__lorem.md) !!!`
 :::
 
+![画像](../../img/sample.jpg)
+
 ## Element example
 
 ### Inline

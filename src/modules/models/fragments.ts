@@ -15,9 +15,14 @@ const readCss = async (options: Options) => {
   try {
     const res = await got(options.cssUrl);
 
-    return res.body;
+    options.logger.info(`read css: ${options.cssUrl}`);
+
+    return `/* from: ${options.cssUrl} */
+${res.body}`;
   } catch {
-    return '';
+    options.logger.error(`read css: ${options.cssUrl}`);
+
+    return `/* from: ${options.cssUrl} */`;
   }
 };
 

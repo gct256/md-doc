@@ -5,10 +5,10 @@
 ## CLI Usage
 
 ```sh
-$ md-doc [options] INPUT-DIR OUTPUT-DIR
+$ md-doc [options] INPUT OUTPUT
 ```
 
-- INPUT-DIR
+- INPUT
   - 入力元
   - 拡張子が`md`のファイルすべてを対象にする
     - ファイル名先頭が`_`のものは無視
@@ -17,26 +17,27 @@ $ md-doc [options] INPUT-DIR OUTPUT-DIR
     - `png`
     - `jpg` / `jpeg`
     - `svg` / `svgz`
-- OUTPUT-DIR
+- OUTPUT
   - 出力先
   - 入力元の階層を再現する
+  - 出力は HTML と PDF となる
 
 ## CLI Options
 
 ### --header-file FILE
 
 - ヘッダファイル
-- 省略時はシンプルな HTML5 のヘッダ
+- 省略時はシンプルな HTML5 のヘッダ（default-fragments/header.html）
 
 ### --footer-file FILE
 
 - フッタファイル
-- 省略時はシンプルな HTML5 のフッタ
+- 省略時はシンプルな HTML5 のフッタ（default-fragments/footer.html）
 
 ### --css-file FILE
 
 - スタイルシートファイル
-- 省略時は内蔵の CSS
+- 省略時は内蔵の CSS（default-fragments/md-doc.css）
 - `--css-url`と同時指定した場合はこちらは使用されない
 
 ### --css-url
@@ -58,7 +59,7 @@ $ md-doc [options] INPUT-DIR OUTPUT-DIR
 ```
 
 - FILENAME: 入力元ディレクトリからの相対パスでファイルを指定
-- 前後のバッククォートを忘れずに（prettier の整形回避のために必要)
+- 前後にバッククォートが必要（prettier の整形回避のため)
 
 ### 画像
 
@@ -66,7 +67,8 @@ $ md-doc [options] INPUT-DIR OUTPUT-DIR
 `![画像](FILENAME)`
 ```
 
-- FILENAME: 入力元ディレクトリからの相対パスでファイルを指定
+- FILENAME: ファイルからの相対パスでファイルを指定
+- 入力ディレクトリ以外の参照は無視
 
 ### 改ページ不可ブロック
 

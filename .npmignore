@@ -1,5 +1,12 @@
+.rpt2_cache/
 .vscode/
+example/
+example-output/
+src/
+.eslintignore
+.eslintrc.yml
 prettier.config.js
+rollup.config.js
+tsconfig.json
+yarn-error.log
 yarn.lock
-example
-example-output

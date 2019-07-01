@@ -2,8 +2,8 @@ import yargs from 'yargs';
 import { remove } from 'fs-extra';
 import signale from 'signale';
 
-import { getOptions, validateOptions } from './options';
-import { build } from './build';
+import { getOptions, validateOptions } from '../models/options';
+import { buildAll } from '../build/buildAll';
 
 export const cliMain = async () => {
   yargs.usage('Usage: $0 [options] INPUT OUTPUT');
@@ -28,15 +28,18 @@ export const cliMain = async () => {
   if (_.length !== 2) {
     yargs.showHelp();
   } else {
-    const options = getOptions({
-      headerFile,
-      footerFile,
-      cssFile,
-      cssUrl,
-      deleteDirectory,
-      input: _[0],
-      output: _[1],
-    });
+    const options = getOptions(
+      {
+        headerFile,
+        footerFile,
+        cssFile,
+        cssUrl,
+        deleteDirectory,
+        input: _[0],
+        output: _[1],
+      },
+      true,
+    );
 
     try {
       await validateOptions(options);
@@ -46,7 +49,7 @@ export const cliMain = async () => {
         signale.info(`remove: ${options.output}`);
       }
 
-      await build(options);
+      await buildAll(options);
     } catch (er) {
       signale.error(er.message);
       yargs.showHelp();

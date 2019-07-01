@@ -2,7 +2,8 @@ import path from 'path';
 
 import { pathExists, stat } from 'fs-extra';
 
-import { defaultFragmentsDir } from './dirs';
+import { defaultFragmentsDir } from '../utils/dirs';
+import { Logger, SignaleLogger, NullLogger } from '../utils/Logger';
 
 /** オプション */
 export interface Options {
@@ -20,6 +21,8 @@ export interface Options {
   input: string;
   /** 出力ディレクトリ */
   output: string;
+  /** ロガー */
+  logger: Logger;
 }
 
 /**
@@ -28,7 +31,7 @@ export interface Options {
  * @param userOptions 指定オプション
  */
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export const getOptions = (userOptions: any): Options => {
+export const getOptions = (userOptions: any, forCli: boolean): Options => {
   const options: Options = {
     headerFile: path.resolve(defaultFragmentsDir, 'header.html'),
     footerFile: path.resolve(defaultFragmentsDir, 'footer.html'),
@@ -37,6 +40,7 @@ export const getOptions = (userOptions: any): Options => {
     deleteDirectory: false,
     input: '',
     output: '',
+    logger: forCli ? SignaleLogger : NullLogger,
   };
 
   if (typeof userOptions === 'object') {

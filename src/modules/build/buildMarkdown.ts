@@ -4,15 +4,16 @@ import MarkdownIt from 'markdown-it';
 import { readFile, outputFile } from 'fs-extra';
 import { JSDOM } from 'jsdom';
 import Mustache from 'mustache';
-import signale from 'signale';
 
-import { Options } from '../options';
-import { replaceExt } from '../replaceExt';
+import { Options } from '../models/options';
+import { replaceExt } from '../utils/replaceExt';
+import { Fragments } from '../models/fragments';
 
 export const buildMarkdown = async (
   md: MarkdownIt,
   relPath: string,
   options: Options,
+  fragments: Fragments,
 ): Promise<string[]> => {
   const inputPath = path.resolve(options.input, relPath);
   const outputPath = replaceExt(
@@ -36,37 +37,37 @@ export const buildMarkdown = async (
   });
 
   const result: string[] = [
-    Mustache.render(await readFile(options.headerFile, 'utf8'), env),
+    Mustache.render(fragments.header, env),
+    '<style>',
+    Mustache.render(fragments.css, env),
+    '</style>',
   ];
-
-  if (options.cssUrl.length > 0) {
-    const link = dom.window.document.createElement('link');
-
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', options.cssUrl);
-
-    result.push(link.outerHTML);
-  } else {
-    result.push(
-      '<style>',
-      Mustache.render(await readFile(options.cssFile, 'utf8'), env),
-      '</style>',
-    );
-  }
 
   result.push(
     dom.window.document.body.innerHTML,
-    Mustache.render(await readFile(options.footerFile, 'utf8'), env),
+    Mustache.render(fragments.footer, env),
   );
 
-  await outputFile(outputPath, result.join(''), 'utf8');
+  await outputFile(outputPath, result.join('\n'), 'utf8');
 
-  signale.info(`write: ${path.relative(options.output, outputPath)}`);
+  options.logger.info(`write: ${path.relative(options.output, outputPath)}`);
 
-  return imgs.map((img) =>
-    path.relative(
-      options.input,
-      path.resolve(path.dirname(inputPath), img.src),
-    ),
-  );
+  return imgs
+    .map((img) => [
+      img.src,
+      path.relative(
+        options.input,
+        path.resolve(path.dirname(inputPath), img.src),
+      ),
+    ])
+    .filter(([imgSrc, imgRelPath]) => {
+      if (imgRelPath.startsWith('..')) {
+        options.logger.warn(`illegal image file location: ${imgSrc}`);
+
+        return false;
+      }
+
+      return true;
+    })
+    .map(([, imgRelPath]) => imgRelPath);
 };
