@@ -42,7 +42,7 @@ export const makePdf = async (options: Options, relPath: string) => {
     },
   });
 
-  options.logger.info(`write: ${pdfFilePath}`);
+  options.logger.info(`write: ${path.relative(options.output, pdfFilePath)}`);
 
   await page.close();
   await browser.close();
