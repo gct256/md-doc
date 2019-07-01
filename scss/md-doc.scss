@@ -265,7 +265,37 @@ img {
   pre {
     background-color: transparent;
     color: $--black;
-    border: 1px solid $--grey;
+    border: 1px solid $--black;
+  }
+
+  hr {
+    border-color: $--black;
+  }
+
+  blockquote {
+    border-color: $--black;
+  }
+
+  table {
+    border-color: $--black;
+  }
+
+  table > thead > tr > th,
+  table > thead > tr > td,
+  table > tbody > tr > th,
+  table > tbody > tr > td,
+  table > tfoot > tr > th,
+  table > tfoot > tr > td {
+    border-color: $--black;
+  }
+
+  table > tbody > tr:first-child > th,
+  table > tbody > tr:first-child > td {
+    border-top: 1px solid $--black;
+  }
+
+  table > tbody > tr + tr > td {
+    border-top: 0;
   }
 
   a {
