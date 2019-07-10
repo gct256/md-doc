@@ -41,7 +41,7 @@
 `!!! include(__lorem.md) !!!`
 :::
 
-::: .group
+::: .group bordered-image
 `!!! include(__lorem.md) !!!`
 
 ![画像](./img/sample.jpg)

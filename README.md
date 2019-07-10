@@ -82,6 +82,33 @@ $ md-doc [options] INPUT OUTPUT
 
 - `::: .group`から次の`...`までが改ページ不可のブロックとなる
 
+### 画像に枠をつけるブロック
+
+```markdown
+::: .bordered-image
+.
+`![画像](FILENAME)`
+.
+:::
+```
+
+- `::: .bordered-image`から次の`...`までに含まれる画像に黒い枠がつく
+- 改ページ不可ブロックと併用する場合は以下のように記述する
+
+  ```markdown
+  ::: .group bordered-image
+  .
+  .
+  :::
+
+  or
+
+  ::: .bordered-image group
+  .
+  .
+  :::
+  ```
+
 ## オプション指定での挿し込みファイルの書式
 
 Mustache 形式での変数展開が可能。
