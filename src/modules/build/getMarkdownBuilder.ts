@@ -4,6 +4,8 @@ import include from 'markdown-it-include';
 import title from 'markdown-it-title';
 import footnote from 'markdown-it-footnote';
 import div from 'markdown-it-div';
+import anchor from 'markdown-it-anchor';
+import toc from 'markdown-it-table-of-contents';
 
 /**
  * Markdownのビルダーを作成
@@ -23,6 +25,10 @@ export const getMardownBuilder = (input: string): MarkdownIt => {
   md.use(title);
   md.use(div);
   md.use(footnote);
+  md.use(anchor);
+  md.use(toc, {
+    includeLevel: [1, 2, 3],
+  });
   md.enable('image');
 
   return md;

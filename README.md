@@ -109,6 +109,12 @@ $ md-doc [options] INPUT OUTPUT
   :::
   ```
 
+### 目次
+
+```markdown
+[[toc]]
+```
+
 ## オプション指定での挿し込みファイルの書式
 
 Mustache 形式での変数展開が可能。

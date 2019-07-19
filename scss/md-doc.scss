@@ -239,6 +239,15 @@ img {
   border: 1px solid $--black;
 }
 
+.table-of-contents {
+  ul ul {
+    margin: 0;
+    li {
+      margin-left: 1em;
+    }
+  }
+}
+
 @media print {
   @page {
     size: 210mm 297mm;
