@@ -17,6 +17,7 @@ export const cliMain = async () => {
     number: true,
     default: 2,
   });
+  yargs.option('toc-title', { nargs: 1, description: 'toc title.' });
   yargs.option('delete-directory', {
     boolean: true,
     description: 'delete output directory before build.',
@@ -29,6 +30,7 @@ export const cliMain = async () => {
     cssFile,
     cssUrl,
     tocLevel,
+    tocTitle,
     deleteDirectory,
   } = yargs.argv;
 
@@ -42,6 +44,7 @@ export const cliMain = async () => {
         cssFile,
         cssUrl,
         tocLevel,
+        tocTitle,
         deleteDirectory,
         input: _[0],
         output: _[1],
