@@ -12,10 +12,18 @@ import toc from 'markdown-it-table-of-contents';
  *
  * @param input 入力ディレクトリ
  */
-export const getMardownBuilder = (input: string): MarkdownIt => {
+export const getMardownBuilder = (
+  input: string,
+  tocLevel: number,
+): MarkdownIt => {
   const md = new MarkdownIt({
     html: true,
   });
+
+  const includeLevel: number[] = [];
+
+  for (let i = 1; i <= tocLevel; i += 1) includeLevel.push(i);
+  if (includeLevel.length === 0) includeLevel.push(1, 2);
 
   md.use(headerSections);
   md.use(include, {
@@ -27,7 +35,7 @@ export const getMardownBuilder = (input: string): MarkdownIt => {
   md.use(footnote);
   md.use(anchor);
   md.use(toc, {
-    includeLevel: [1, 2, 3],
+    includeLevel,
   });
   md.enable('image');
 

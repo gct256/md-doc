@@ -15,6 +15,8 @@ export interface Options {
   cssFile: string;
   /** CSS URL */
   cssUrl: string;
+  /** TOCレベル */
+  tocLevel: number;
   /** 出力ディレクトリ削除フラグ */
   deleteDirectory: boolean;
   /** 入力ディレクトリ */
@@ -37,6 +39,7 @@ export const getOptions = (userOptions: any, forCli: boolean): Options => {
     footerFile: path.resolve(defaultFragmentsDir, 'footer.html'),
     cssFile: path.resolve(defaultFragmentsDir, 'md-doc.css'),
     cssUrl: '',
+    tocLevel: 2,
     deleteDirectory: false,
     input: '',
     output: '',
@@ -58,6 +61,10 @@ export const getOptions = (userOptions: any, forCli: boolean): Options => {
 
     if (typeof userOptions.cssUrl === 'string') {
       options.cssUrl = userOptions.cssUrl;
+    }
+
+    if (typeof userOptions.tocLevel === 'number') {
+      options.tocLevel = userOptions.tocLevel;
     }
 
     if ('deleteDirectory' in userOptions) {

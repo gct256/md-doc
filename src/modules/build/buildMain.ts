@@ -8,7 +8,7 @@ import { copyImage } from './copyImage';
 
 export const buildMain = async (options: Options, relPaths: string[]) => {
   const fragments = await getFragments(options);
-  const md = getMardownBuilder(options.input);
+  const md = getMardownBuilder(options.input, options.tocLevel);
 
   const images = await Promise.all(
     relPaths.map(

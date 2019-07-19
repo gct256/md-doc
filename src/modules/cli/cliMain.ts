@@ -11,6 +11,12 @@ export const cliMain = async () => {
   yargs.option('footer-file', { nargs: 1, description: 'footer file path.' });
   yargs.option('css-file', { nargs: 1, description: 'css file path.' });
   yargs.option('css-url', { nargs: 1, description: 'css url.' });
+  yargs.option('toc-level', {
+    nargs: 1,
+    description: 'toc header level.',
+    number: true,
+    default: 2,
+  });
   yargs.option('delete-directory', {
     boolean: true,
     description: 'delete output directory before build.',
@@ -22,6 +28,7 @@ export const cliMain = async () => {
     footerFile,
     cssFile,
     cssUrl,
+    tocLevel,
     deleteDirectory,
   } = yargs.argv;
 
@@ -34,6 +41,7 @@ export const cliMain = async () => {
         footerFile,
         cssFile,
         cssUrl,
+        tocLevel,
         deleteDirectory,
         input: _[0],
         output: _[1],
