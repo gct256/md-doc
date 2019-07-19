@@ -1,9 +1,6 @@
-# Heading 1
+# Document Title
 
 [[toc]]
-
-`!!! include(__lorem.md) !!!`
-`!!! include(__lorem.md) !!!`
 
 ## Heading 2
 

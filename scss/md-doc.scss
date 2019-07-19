@@ -240,11 +240,14 @@ img {
 }
 
 .table-of-contents {
-  ul ul {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  ul {
+    list-style: none;
     margin: 0;
-    li {
-      margin-left: 1em;
-    }
+  }
+  ul ul li {
+    margin-left: 1em;
   }
 }
 
