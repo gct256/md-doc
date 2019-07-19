@@ -22,8 +22,8 @@ export const getMardownBuilder = (
 
   const includeLevel: number[] = [];
 
-  for (let i = 1; i <= tocLevel; i += 1) includeLevel.push(i);
-  if (includeLevel.length === 0) includeLevel.push(1, 2);
+  for (let i = 2; i <= tocLevel; i += 1) includeLevel.push(i);
+  if (includeLevel.length === 0) includeLevel.push(2);
 
   md.use(headerSections);
   md.use(include, {

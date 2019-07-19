@@ -1,5 +1,7 @@
 # Heading 1
 
+[[toc]]
+
 `!!! include(__lorem.md) !!!`
 `!!! include(__lorem.md) !!!`
 
@@ -119,7 +121,3 @@ pre-formatted
 | Data 2-1       | Table Data 2-2 |       Data 2-3 |
 | Data 3-1       |    Data 3-2    | Table Data 3-3 |
 | Data 4-1       |    Data 4-2    |       Data 4-3 |
-
-### TOC
-
-[[toc]]
