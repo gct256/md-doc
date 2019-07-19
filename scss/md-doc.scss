@@ -242,8 +242,6 @@ img {
 .table-of-contents {
   margin-left: 2rem;
   margin-right: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid $--grey;
   ul {
     list-style: square;
     margin: 0;
@@ -272,6 +270,11 @@ img {
   p {
     margin: 0 1rem;
   }
+}
+
+.table-of-contents-footer {
+  margin-top: 2rem;
+  border-top: 1px solid $--grey;
 }
 
 @media print {

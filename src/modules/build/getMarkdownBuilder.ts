@@ -12,7 +12,7 @@ import { Options } from '../models/options';
 
 const dom = new JSDOM();
 
-const getHeader = (tocTitle: string): string => {
+const getTocHeader = (tocTitle: string): string => {
   if (tocTitle.trim().length === 0) return '';
 
   const p = dom.window.document.createElement('p');
@@ -20,6 +20,12 @@ const getHeader = (tocTitle: string): string => {
   p.textContent = tocTitle;
 
   return `<div class="table-of-contents-header"><p>${p.innerHTML}</p></div>`;
+};
+
+const getTocFooter = (tocTitle: string): string => {
+  if (tocTitle.trim().length === 0) return '';
+
+  return `<div class="table-of-contents-footer"></div>`;
 };
 
 /**
@@ -52,7 +58,8 @@ export const getMardownBuilder = ({
   md.use(anchor);
   md.use(toc, {
     includeLevel,
-    containerHeaderHtml: getHeader(tocTitle),
+    containerHeaderHtml: getTocHeader(tocTitle),
+    containerFooterHtml: getTocFooter(tocTitle),
   });
   md.enable('image');
 
