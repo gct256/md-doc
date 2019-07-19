@@ -258,13 +258,14 @@ img {
   justify-content: stretch;
   align-items: center;
   margin-bottom: 1rem;
+  width: 100%;
   &::before,
   &::after {
     content: '';
     display: block;
-    background: $--grey;
+    border-top: 1px solid $--grey;
     flex-grow: 1;
-    height: 1px;
+    height: 0px;
   }
 
   p {
