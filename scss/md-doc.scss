@@ -242,12 +242,35 @@ img {
 .table-of-contents {
   margin-left: 2rem;
   margin-right: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $--grey;
   ul {
-    list-style: none;
+    list-style: square;
     margin: 0;
+    padding-left: 1em;
   }
   ul ul li {
     margin-left: 1em;
+  }
+}
+
+.table-of-contents-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+  margin-bottom: 1rem;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    background: $--grey;
+    flex-grow: 1;
+    height: 1px;
+  }
+
+  p {
+    margin: 0 1rem;
   }
 }
 
