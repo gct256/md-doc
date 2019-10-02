@@ -27,23 +27,23 @@
     "@types/fs-extra": "^8.0.0",
     "@types/got": "^9.6.2",
     "@types/jsdom": "^12.2.4",
-    "@types/markdown-it": "^0.0.8",
+    "@types/markdown-it": "^0.0.9",
     "@types/mustache": "^0.8.32",
     "@types/node": "^12.6.8",
     "@types/puppeteer": "^1.12.4",
     "@types/signale": "^1.2.1",
     "@types/yargs": "^13.0.0",
-    "@typescript-eslint/eslint-plugin": "^1.12.0",
-    "@typescript-eslint/parser": "^1.12.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
     "eslint": "^6.0.1",
-    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-promise": "^4.2.1",
     "node-sass": "^4.12.0",
     "rollup": "^1.17.0",
     "rollup-plugin-auto-external": "^2.0.0",
-    "rollup-plugin-typescript2": "^0.22.0",
+    "rollup-plugin-typescript2": "^0.24.3",
     "typescript": "^3.5.3"
   },
   "dependencies": {
@@ -51,7 +51,7 @@
     "globby": "^10.0.1",
     "got": "^9.6.0",
     "jsdom": "^15.1.1",
-    "markdown-it": "^9.0.1",
+    "markdown-it": "^10.0.0",
     "markdown-it-anchor": "^5.2.4",
     "markdown-it-div": "^1.1.0",
     "markdown-it-footnote": "^3.0.2",
@@ -62,7 +62,7 @@
     "mustache": "^3.0.1",
     "puppeteer": "^1.18.1",
     "signale": "^1.4.0",
-    "yargs": "^13.3.0"
+    "yargs": "^14.0.0"
   },
   "signale": {
     "displayTimestamp": true
