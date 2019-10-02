@@ -28,6 +28,55 @@ const getTocFooter = (tocTitle: string): string => {
   return `<div class="table-of-contents-footer"></div>`;
 };
 
+const getId = (value: string, count: number = 0): string => {
+  const id = encodeURIComponent(
+    value
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-'),
+  );
+
+  return count > 0 ? `${id}-${count}` : id;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Slugify = (value: string) => string;
+
+const mdForStrip = new MarkdownIt({
+  html: true,
+});
+
+const getSulugify = (stripMarkdown: boolean): Slugify => {
+  const cacheMap = new Map<string, string[]>();
+
+  return (value: string): string => {
+    const v = stripMarkdown
+      ? mdForStrip
+          .render(value)
+          .replace(/<[^>]+>?/g, '')
+          .trim()
+      : value;
+
+    console.debug(v);
+
+    const cache = cacheMap.get(v);
+
+    if (cache === undefined) {
+      const id = getId(v);
+
+      cacheMap.set(v, [id]);
+
+      return id;
+    }
+
+    const id = getId(v, cache.length);
+
+    cacheMap.set(v, [...cache, id]);
+
+    return id;
+  };
+};
+
 /**
  * Markdownのビルダーを作成
  *
@@ -55,11 +104,14 @@ export const getMardownBuilder = ({
   md.use(title);
   md.use(div);
   md.use(footnote);
-  md.use(anchor);
+  md.use(anchor, {
+    slugify: getSulugify(false),
+  });
   md.use(toc, {
     includeLevel,
     containerHeaderHtml: getTocHeader(tocTitle),
     containerFooterHtml: getTocFooter(tocTitle),
+    slugify: getSulugify(true),
   });
   md.enable('image');
 

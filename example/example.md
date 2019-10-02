@@ -27,6 +27,16 @@
 `!!! include(__lorem.md) !!!`
 `!!! include(__lorem.md) !!!`
 
+### <ins>Heading with decoration</ins>
+
+`!!! include(__lorem.md) !!!`
+`!!! include(__lorem.md) !!!`
+
+### **Heading with decoration**
+
+`!!! include(__lorem.md) !!!`
+`!!! include(__lorem.md) !!!`
+
 ## Image example
 
 `!!! include(__lorem.md) !!!`
