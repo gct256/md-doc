@@ -57,8 +57,6 @@ const getSulugify = (stripMarkdown: boolean): Slugify => {
           .trim()
       : value;
 
-    console.debug(v);
-
     const cache = cacheMap.get(v);
 
     if (cache === undefined) {
